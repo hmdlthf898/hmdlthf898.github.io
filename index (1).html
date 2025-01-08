@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Ahmad Atsnal Lathief</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Typography */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Warna Tema */
+        :root {
+            --warna-utama: #1e3a8a; /* Biru Tua */
+            --warna-latar: #121212; /* Hitam Gelap */
+            --warna-teks: #ffffff; /* Putih */
+            --warna-aksi: #3b82f6; /* Biru Cerah */
+            --warna-bg-kartu: #1f2937; /* Abu-abu Gelap */
+            --warna-bg-header: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            --warna-bg-footer: linear-gradient(135deg, #3b82f6, #1e3a8a);
+        }
+
+        /* Header */
+        header {
+            background: var(--warna-bg-header);
+            padding: 30px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        header h1 {
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+            color: var(--warna-teks);
+            animation: fadeIn 2s ease-out;
+        }
+
+        nav a {
+            color: var(--warna-teks);
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        nav a::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: var(--warna-aksi);
+            transition: width 0.3s;
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+        }
+
+        nav a:hover {
+            color: var(--warna-aksi);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Container */
+        .container {
+            width: 80%;
+            margin: 40px auto;
+            animation: fadeIn 2s ease-out;
+        }
+
+        /* Bagian Tentang Saya */
+        #about {
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards;
+        }
+
+        #about h2 {
+            border-bottom: 2px solid var(--warna-aksi);
+            display: inline-block;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        #about p {
+            font-size: 1.1rem;
+            max-width: 800px;
+        }
+
+        /* Bagian Keahlian */
+        #skills {
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1.2s forwards;
+        }
+
+        #skills h2 {
+            border-bottom: 2px solid var(--warna-aksi);
+            display: inline-block;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .skills-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-size: 1.1rem;
+        }
+
+        .skills-list li {
+            background-color: var(--warna-bg-kartu);
+            padding: 10px 15px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .skills-list li:hover {
+            background-color: var(--warna-aksi);
+            transform: translateY(-5px);
+            color: #fff;
+        }
+
+        .skills-list li i {
+            color: var(--warna-aksi);
+        }
+
+        /* Bagian Proyek */
+        #projects {
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1.4s forwards;
+        }
+
+        #projects h2 {
+            border-bottom: 2px solid var(--warna-aksi);
+            display: inline-block;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .project {
+            background-color: var(--warna-bg-kartu);
+            padding: 20px;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 200%;
+            height: 200%;
+            background: var(--warna-aksi);
+            transform: rotate(45deg);
+            transition: all 0.5s;
+            z-index: 0;
+        }
+
+        .project:hover::before {
+            top: 0;
+            left: 0;
+        }
+
+        .project:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .project h3 {
+            margin-bottom: 10px;
+            color: var(--warna-teks);
+            z-index: 1;
+            position: relative;
+        }
+
+        .project p {
+            font-size: 0.95rem;
+            z-index: 1;
+            position: relative;
+        }
+
+        /* Bagian Kontak */
+        #contact {
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1.6s forwards;
+        }
+
+        #contact h2 {
+            border-bottom: 2px solid var(--warna-aksi);
+            display: inline-block;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .contact-info {
+            font-size: 1.1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .contact-info a {
+            color: var(--warna-aksi);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: #ffffff;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background: var(--warna-bg-footer);
+            color: var(--warna-teks);
+            animation: fadeIn 2s ease-out;
+        }
+
+        /* Back to Top Button */
+        #back-to-top {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background-color: var(--warna-aksi);
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            font-size: 1.2rem;
+            transition: background-color 0.3s, transform 0.3s;
+            z-index: 1000;
+        }
+
+        #back-to-top:hover {
+            background-color: #2563eb;
+            transform: scale(1.1);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsif */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
+
+            .skills-list {
+                justify-content: center;
+            }
+
+            .contact-info {
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Ahmad Atsnal Lathief</h1>
+        <nav>
+            <a href="#about"><i class="fas fa-user"></i> Tentang Saya</a>
+            <a href="#skills"><i class="fas fa-tools"></i> Keahlian</a>
+            <a href="#projects"><i class="fas fa-briefcase"></i> Proyek</a>
+            <a href="#contact"><i class="fas fa-envelope"></i> Kontak</a>
+        </nav>
+    </header>
+
+    <!-- Konten Utama -->
+    <div class="container">
+        <!-- Tentang Saya -->
+        <section id="about">
+            <h2>Tentang Saya</h2>
+            <p>
+                Halo! Saya Ahmad Atsnal Lathief, seorang mahasiswa program studi Informatika di Universitas Teknologi Yogyakarta. Saya bersemangat dalam menciptakan solusi yang inovatif dan efektif. Berikut adalah beberapa keahlian dan proyek yang telah saya kerjakan.
+            </p>
+        </section>
+
+        <!-- Keahlian -->
+        <section id="skills">
+            <h2>Keahlian</h2>
+            <ul class="skills-list">
+                <li><i class="fab fa-python"></i> Python</li>
+                <li><i class="fab fa-linux"></i> Linux</li>
+                <li><i class="fab fa-git-alt"></i> Git</li>
+                <li><i class="fas fa-file-excel"></i> Excel</li>
+                <li><i class="fas fa-project-diagram"></i> UML</li>
+            </ul>
+        </section>
+
+        <!-- Proyek -->
+        <section id="projects">
+            <h2>Proyek</h2>
+            <div class="project-grid">
+                <div class="project">
+                    <h3>Aplikasi Marketplace Sederhana</h3>
+                    <p>
+                        Sebuah aplikasi marketplace sederhana yang memungkinkan pengguna untuk membeli dan menjual produk secara online dengan antarmuka yang mudah digunakan.
+                    </p>
+                </div>
+                <div class="project">
+                    <h3>Aplikasi Perpustakaan Sederhana</h3>
+                    <p>
+                        Aplikasi perpustakaan sederhana yang memudahkan pengelolaan buku, peminjaman, dan pengembalian oleh anggota perpustakaan.
+                    </p>
+                </div>
+                <div class="project">
+                    <h3>Game RPG Sederhana</h3>
+                    <p>
+                        Sebuah game RPG sederhana yang menawarkan pengalaman bermain yang menarik dengan cerita yang mendalam dan mekanisme permainan yang intuitif.
+                    </p>
+                </div>
+                <!-- Tambahkan proyek lainnya sesuai kebutuhan -->
+            </div>
+        </section>
+
+        <!-- Kontak -->
+        <section id="contact">
+            <h2>Kontak</h2>
+            <div class="contact-info">
+                <a href="mailto:imzea69@gmail.com"><i class="fas fa-envelope"></i> imzea69@gmail.com</a>
+                <a href="https://wa.me/085601192086" target="_blank"><i class="fab fa-whatsapp"></i> 0856-0119-2086</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 Ahmad Atsnal Lathief. Semua hak dilindungi.
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" title="Kembali ke Atas"><i class="fas fa-chevron-up"></i></button>
+
+    <!-- JavaScript -->
+    <script>
+        // Back to Top Button
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
